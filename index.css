@@ -20,3 +20,53 @@ button{
 .textNavBar{
     
 }
+
+.srcbar{
+    position: relative;
+    display: inline-block;
+}
+
+.srcloc,.srccat,.srcval,.srcsurf{
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.drop1,.drop2,.drop3,.drop4{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.drop1 a,.drop2 a,.drop3 a,.drop4 a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.wrap1, .wrap2, .wrap3, .wrap4 {
+    position: relative;
+    display: inline-block;
+}
+
+.drop1 a:hover {background-color: #ddd;}
+.drop2 a:hover {background-color: #ddd;}
+.drop3 a:hover {background-color: #ddd;}
+.drop4 a:hover {background-color: #ddd;}
+
+.wrap1:hover .drop1,
+.wrap2:hover .drop2,
+.wrap3:hover .drop3,
+.wrap4:hover .drop4 {
+    display: block;
+}
+
+.srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover {background-color: #3e8e41;}
+
+
