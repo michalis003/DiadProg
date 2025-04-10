@@ -1,7 +1,36 @@
-.footer{
-    background-color: lightgrey;
+footer{
+    background-color: black;
     color: blue;
+    
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;
+    color: white;
+    text-align: center;
+
+    list-style-type: none;
+
 }
+
+.contenier{
+    margin: 2rem;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.footer div{
+    color: orange;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.footer_info a:link, a:visited, a:hover{
+    color: white;
+}
+
 
 .navbar{
     display: grid;
@@ -68,5 +97,8 @@ button{
 }
 
 .srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover {background-color: #3e8e41;}
+
+
+
 
 
