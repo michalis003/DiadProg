@@ -52,20 +52,25 @@ button{
     margin: 1rem;
 }
 
-.textNavBar{
-    
-}
 
 .srcbar{
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    max-width: 85%;
+    max-width: 85%; */
+    /* position: relative; */
+
 
     background-color: orange;
     border-radius: 1.5rem;
-    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 100px;
+    width: 100%;
+
 }
 
 .srcloc,.srccat,.srcval,.srcsurf{
@@ -74,13 +79,16 @@ button{
     padding: 16px;
     font-size: 16px;
     border: none;
+    max-width: 100%;
+
+    width: 100%;
 }
 
 .drop1,.drop2,.drop3,.drop4{
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    /* min-width: 160px; */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -95,6 +103,8 @@ button{
 .wrap1, .wrap2, .wrap3, .wrap4 {
     position: relative;
     display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
 .drop1 a:hover {background-color: #ddd;}
@@ -111,6 +121,10 @@ button{
 
 .srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover {background-color: #3e8e41;}
 
+
+#accordionExample{
+    margin-top: 5%;
+}
 
 
 
