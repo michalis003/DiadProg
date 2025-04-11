@@ -1,6 +1,14 @@
 #search_page_main_div{
     display: grid;
-    grid-template-rows: 0.5fr 1fr 2fr 0.8fr;
+    grid-template-rows: 0.5fr 0.2fr 2fr 0.8fr;
 }
 
+#row3_search_page{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
+#search_div{
+    display: grid;
+    grid-template-rows: 0.5fr 15fr 0.5fr;
+}
