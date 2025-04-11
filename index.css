@@ -25,7 +25,7 @@ footer{
     color: orange;
     font-size: 1.1rem;
     text-align: center;
-}
+} 
 
 .footer_info a:link, a:visited, a:hover{
     color: white;
@@ -51,8 +51,15 @@ button{
 }
 
 .srcbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 85%;
+
+    background-color: orange;
+    border-radius: 1.5rem;
     position: relative;
-    display: inline-block;
 }
 
 .srcloc,.srccat,.srcval,.srcsurf{
