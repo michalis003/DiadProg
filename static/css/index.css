@@ -1,4 +1,4 @@
-body{
+#home_page_grip{
     display: grid;
     grid-template-rows: 0.4fr 1fr 1.5fr 1fr;
 }
