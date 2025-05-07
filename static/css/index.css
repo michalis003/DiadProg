@@ -73,7 +73,7 @@ button{
 
 }
 
-.srcloc,.srccat,.srcval,.srcsurf{
+.srcloc,.srccat,.srcval,.srcsurf, .sort_btn{
     background-color: #04AA6D;
     color: white;
     padding: 16px;
@@ -84,7 +84,7 @@ button{
     width: 100%;
 }
 
-.drop1,.drop2,.drop3,.drop4{
+.drop1,.drop2,.drop3,.drop4, .drop{
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -93,14 +93,14 @@ button{
     z-index: 1;
 }
 
-.drop1 a,.drop2 a,.drop3 a,.drop4 a{
+.drop1 a,.drop2 a,.drop3 a,.drop4 a, .drop a{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.wrap1, .wrap2, .wrap3, .wrap4 {
+.wrap1, .wrap2, .wrap3, .wrap4, .wrap {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -111,15 +111,17 @@ button{
 .drop2 a:hover {background-color: #ddd;}
 .drop3 a:hover {background-color: #ddd;}
 .drop4 a:hover {background-color: #ddd;}
+.drop a:hover {background-color: #ddd;}
 
 .wrap1:hover .drop1,
 .wrap2:hover .drop2,
 .wrap3:hover .drop3,
-.wrap4:hover .drop4 {
+.wrap4:hover .drop4,
+.wrap:hover .drop {
     display: block;
 }
 
-.srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover {background-color: #3e8e41;}
+.srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover, .btn:hover {background-color: #3e8e41;}
 
 
 #accordionExample{

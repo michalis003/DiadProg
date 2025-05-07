@@ -1,6 +1,6 @@
 #search_page_main_div{
     display: grid;
-    grid-template-rows: 0.5fr 0.2fr 2fr 0.8fr;
+    grid-template-rows: 0.5fr 0.1fr 2fr 0.8fr;
 }
 
 #row3_search_page{
@@ -10,5 +10,24 @@
 
 #search_div{
     display: grid;
-    grid-template-rows: 0.5fr 15fr 0.5fr;
+    grid-template-rows: 1fr 5fr 1fr;
 }
+
+#srcbar_search_page{
+    height: auto;
+    padding: 20px;
+}
+
+#srcloc_search_page, #srccat_search_page, #srcval_search_page, #srcsurf_search_page, #srcsrc_search_page{
+    padding: 5px;
+}
+
+/* #sort_wrap{
+    display: flex;
+    justify-content: right;
+    align-items:flex-end;
+}
+
+#sort_btn{
+    padding: 10px 20px;
+} */
