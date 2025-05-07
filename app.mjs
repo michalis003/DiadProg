@@ -26,8 +26,6 @@ app.set('view engine', 'hbs');
 
 let getMainPage = function(req, res) {
     try{
-        console.log("test")
-        // res.send("Page")
         res.render('srcbar')
     }
     catch(err){
@@ -37,7 +35,6 @@ let getMainPage = function(req, res) {
 
 let getSearchPage = function(req, res) {
     try{
-        console.log("test")
         // res.send("Page")
         res.render('places')
     }
