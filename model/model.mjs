@@ -1,7 +1,6 @@
 import { default as bettersqlite3 } from 'better-sqlite3';
 
-// const db = new bettersqlite3(`${import.meta.dirname}/../data/database.db`, { fileMustExist: true });
-const db = new bettersqlite3(`/Users/michaliszontos/programms/Δυαδικτακος Προγραμματισμος/Exercise/data/database.db`, { fileMustExist: true });
+const db = new bettersqlite3(`${import.meta.dirname}/../data/database.db`, { fileMustExist: true });
 console.log(import.meta.dirname);
 console.log(`${import.meta.dirname}/../data/database.db`);
 
