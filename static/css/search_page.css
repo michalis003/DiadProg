@@ -1,6 +1,6 @@
 #search_page_main_div{
     display: grid;
-    grid-template-rows: 0.5fr 0.1fr 2fr 0.8fr;
+    grid-template-rows: 0.5fr 0.5fr 2fr 0.8fr;
 }
 
 #row3_search_page{
@@ -16,6 +16,8 @@
 #srcbar_search_page{
     height: auto;
     padding: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 #srcloc_search_page, #srccat_search_page, #srcval_search_page, #srcsurf_search_page, #srcsrc_search_page{
