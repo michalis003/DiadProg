@@ -50,12 +50,25 @@
             </div>
 
         </div>
-        <div>2</div>
+        <div class="scroll-container">
+            {{#each properties}}
+                <div class="property-card">
+                <h3>{{location}} - {{type}}</h3>
+                <p><strong>Τιμή:</strong> {{price}}€</p>
+                <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
+                <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
+                <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
+                <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
+                <p><strong>Περιγραφή:</strong> {{desc}}</p>
+                </div>
+            {{/each}}
+        </div>
+
         <div>3</div>
         
 
     </div>
-    <div>2</div>
+    <div>23</div>
 
 </div>
 

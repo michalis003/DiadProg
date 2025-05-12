@@ -1,3 +1,4 @@
+console.log("File load")
 document.querySelectorAll('.drop2 a').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault(); // prevent jump to top
@@ -5,4 +6,6 @@ document.querySelectorAll('.drop2 a').forEach(link => {
         document.querySelector('.srccat').textContent = selectedText;
         });
 });
+
+
 
