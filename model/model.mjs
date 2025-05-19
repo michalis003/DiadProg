@@ -15,7 +15,20 @@ const getAkinito=() =>{
      }
 }
 
-console.log(getAkinito());
+const findAkinito=(place, tp, min_value, max_value, min_srface, max_srface) =>{
+   const stmt = db.prepare("SELECT * FROM AKINITO WHERE location = ? AND type = ? AND price>=? AND price<=? AND surface >= ? AND surface <= ?");
+    let tasks;
+    try {
+        tasks = stmt.all(place, tp, min_value, max_value, min_srface, max_srface);
+        return tasks;
+    } catch (err) {
+        throw err;
+    }
+}
+
+// console.log(getAkinito());
+// console.log("---");
+// console.log(findAkinito("Athens", "Αγορά", 1000, 2500, 50));
 
 
 
@@ -28,4 +41,4 @@ function shutdown() {
     }
  }
 
- export{getAkinito}
+ export{getAkinito, findAkinito}

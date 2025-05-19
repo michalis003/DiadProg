@@ -10,26 +10,62 @@
 
 #search_div{
     display: grid;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-rows: 0.1fr 5fr 1fr;
 }
 
 #srcbar_search_page{
     height: auto;
     padding: 20px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    /* margin-top: 1%; */
+    /* margin-bottom: 5%; */
+    max-height: 100px;
 }
 
 #srcloc_search_page, #srccat_search_page, #srcval_search_page, #srcsurf_search_page, #srcsrc_search_page{
     padding: 5px;
 }
 
-/* #sort_wrap{
+/* Property */
+.property-section {
+    padding: 2rem;
+    min-height: 50%;
+  }
+  
+  .property-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .property-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .property-card:hover {
+    transform: scale(1.01);
+  }
+  
+  .pagination {
     display: flex;
-    justify-content: right;
-    align-items:flex-end;
-}
-
-#sort_btn{
-    padding: 10px 20px;
-} */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .pagination button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .property-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 κάρτες σε μεγαλύτερες οθόνες */
+    }
+  }
+  

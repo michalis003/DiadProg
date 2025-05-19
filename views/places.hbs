@@ -1,38 +1,36 @@
-<div class="srcbar" id="srcbar_search_page">
+<form class="srcbar" action="/searchPage" style="">
     <div class="wrap1">
-        <button class="srcloc" id="srcloc_search_page">Περιοχή</button>
-        <div class="drop1"></div>
+        <input class="srcloc" name="perioxi" type="text" placeholder="Eisagete Perioxi">
     </div>
 
-    <div class="wrap2">
-        <button class="srccat" id="srccat_search_page">Κατηγορία</button>
-        <div class="drop2">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+    <div>
+      <select name="katidoria" id="katidoria">
+        <option value="none" selected hidden>Select</option>
+        <option value="Αγορά">Αγορά</option>
+        <option value="Ενοικείαση">Ενοικείαση</option>
+      </select>
+    </div>
+    
+    <div class="wrap3">
+      <input class="srcloc" name="min_price" type="text" placeholder="Ελαχιστή Τιμή">
     </div>
 
     <div class="wrap3">
-        <button class="srcval" id="srcval_search_page">Τιμή</button>
-        <div class="drop3">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+      <input class="srcloc" name="max_price" type="text" placeholder="Μέγιστη Τιμή">
+    </div>
+    
+
+    <div class="wrap4">
+      <input class="srcloc" name="min_emvadon" type="text" placeholder="Ελ. Εμβαδόν">
     </div>
 
     <div class="wrap4">
-        <button class="srcsurf" id="srcsurf_search_page">Εμβαδόν</button>
-        <div class="drop4">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+      <input class="srcloc" name="max_emvadon" type="text" placeholder="Μεγ. Εμβαδόν">
     </div>
     
-    <button class="srcsrc" id="srcsrc_search_page">Αναζήτηση</button>
-</div>
+    <button class="srcsrc" type="submit">Αναζήτηση</button>
+</form>
+
 
 <div id="row3_search_page">
 
@@ -50,12 +48,31 @@
             </div>
 
         </div>
-        <div>2</div>
-        <div>3</div>
+        <div class="scroll-container property-section">
+            {{#each properties}}
+                <div class="property-card">
+                  <h3>{{location}} - {{type}}</h3>
+                  <p><strong>Τιμή:</strong> {{price}}€</p>
+                  <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
+                  <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
+                  <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
+                  <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
+                  <p><strong>Περιγραφή:</strong> {{desc}}</p>
+                </div>
+            {{/each}}
+        </div>
+
+        <div>
+          <div class="pagination">
+              <button onclick="prevPage()">« Προηγούμενη</button>
+              <span id="pageNum">1</span>
+              <button onclick="nextPage()">Επόμενη »</button>
+          </div>
+        </div>
         
 
     </div>
-    <div>2</div>
+    <div>23</div>
 
 </div>
 

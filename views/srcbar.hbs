@@ -1,38 +1,35 @@
-<div class="srcbar">
+<form class="srcbar" action="/searchPage">
     <div class="wrap1">
-        <button class="srcloc">Περιοχή</button>
-        <div class="drop1"></div>
+        <input class="srcloc" name="perioxi" type="text" placeholder="Eisagete Perioxi">
     </div>
 
-    <div class="wrap2">
-        <button class="srccat">Κατηγορία</button>
-        <div class="drop2">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+    <div>
+      <select name="katidoria" id="katidoria">
+        <option value="none" selected hidden>Select</option>
+        <option value="Αγορά">Αγορά</option>
+        <option value="Ενοικείαση">Ενοικείαση</option>
+      </select>
+    </div>
+    
+    <div class="wrap3">
+      <input class="srcloc" name="min_price" type="text" placeholder="Ελαχιστή Τιμή">
     </div>
 
     <div class="wrap3">
-        <button class="srcval">Τιμή</button>
-        <div class="drop3">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+      <input class="srcloc" name="max_price" type="text" placeholder="Μέγιστη Τιμή">
+    </div>
+    
+
+    <div class="wrap4">
+      <input class="srcloc" name="min_emvadon" type="text" placeholder="Ελ. Εμβαδόν">
     </div>
 
     <div class="wrap4">
-        <button class="srcsurf">Εμβαδόν</button>
-        <div class="drop4">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+      <input class="srcloc" name="max_emvadon" type="text" placeholder="Μεγ. Εμβαδόν">
     </div>
     
-    <button class="srcsrc">Αναζήτηση</button>
-</div>
+    <button class="srcsrc" type="submit">Αναζήτηση</button>
+</form>
 
 
 <div class="accordion" id="accordionExample">
