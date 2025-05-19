@@ -25,12 +25,7 @@ const findAkinito=(place, tp, min_value, max_value, min_srface, max_srface) =>{
         throw err;
     }
 }
-
-// console.log(getAkinito());
-// console.log("---");
-// console.log(findAkinito("Athens", "Αγορά", 1000, 2500, 50));
-
-
+ 
 
 function shutdown() {
     try {

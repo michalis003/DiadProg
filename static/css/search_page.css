@@ -69,3 +69,10 @@
     }
   }
   
+
+/* Map */
+#mapid {
+  height: 100%;
+  min-height: 400px;
+  width: 100%;
+}
