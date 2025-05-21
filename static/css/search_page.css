@@ -44,6 +44,19 @@
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
+
+
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; */
+    
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px; /* Ή όσο χρειάζεσαι */
+    margin: 1rem auto;
+
   }
   
   .property-card:hover {
@@ -75,4 +88,21 @@
   height: 100%;
   min-height: 400px;
   width: 100%;
+}
+/* place_grid */
+.place_grid_cont{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+.column {
+  background-color: #f0f0f0;
+  padding: 20px;
+
+  /* flex: 1;
+  padding: 2%;
+ */
+
 }

@@ -5,7 +5,7 @@
 
     <div>
       <select name="katidoria" id="katidoria">
-        <option value="none" selected hidden>Select</option>
+        <option value=1 selected hidden>Select</option>
         <option value="Αγορά">Αγορά</option>
         <option value="Ενοικείαση">Ενοικείαση</option>
       </select>
@@ -48,16 +48,21 @@
             </div>
 
         </div>
-        <div class="scroll-container property-section">
+        <div class="property-section ">
             {{#each properties}}
                 <div class="property-card">
-                  <h3>{{location}} - {{type}}</h3>
-                  <p><strong>Τιμή:</strong> {{price}}€</p>
-                  <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
-                  <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
-                  <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
-                  <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
-                  <p><strong>Περιγραφή:</strong> {{desc}}</p>
+                  <div class="place_grid_cont">
+                      <div class="column">
+                          <h3>{{location}} - {{type}}</h3>
+                          <p><strong>Τιμή:</strong> {{price}}€</p>
+                          <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
+                          <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
+                          <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
+                          <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
+                          <p><strong>Περιγραφή:</strong> {{desc}}</p>
+                      </div>
+                     <div  class="column">test</div>
+                  </div>
                 </div>
             {{/each}}
         </div>

@@ -23,7 +23,6 @@ let getSearchPage = function(req, res) {
         let spitia;
         if (req.query.perioxi!="" || req.query.katidoria != "none" || req.query.min_price!="" || req.query.max_price!="" || req.query.min_emvadon!="" ||req.query.max_emvadon!=""){
             spitia = model.findAkinito(req.query.perioxi,req.query.katidoria,req.query.min_price,req.query.max_price,req.query.min_emvadon, req.query.max_emvadon);            
-            console.log("IIFFF")
         }
         else{
             spitia = model.getAkinito();
