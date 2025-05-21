@@ -27,7 +27,7 @@ let getSearchPage = function(req, res) {
         else{
             spitia = model.getAkinito();
         }
-        res.render('places', {properties: spitia})
+        res.render('places', {properties: spitia, prop:JSON.stringify(spitia)})
     }
     catch(err){
         res.send(err.message)
