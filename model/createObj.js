@@ -34,3 +34,26 @@ exports.Property = function (prop_id,user_id,
         this.x = x 
         this.y = y
 }
+
+
+exports.User = function(id,password,username,
+    name= undefined,
+    surname = undefined,
+    tel = undefined,
+    email = undefined,
+    comm_hours= undefined,){
+        this.id= id
+        this.password= password
+        this.username = username
+        this.name=name
+        this.surname = surname
+        this.tel= tel
+        this.email=email
+        this.comm_hours= comm_hours
+    }
+
+
+exports.Aresei= function(buyer_id, prop_id){
+    this.buyer_id = buyer_id
+    this.prop_id = prop_id
+}

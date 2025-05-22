@@ -1,8 +1,13 @@
 {
   "dependencies": {
+    "@esri/arcgis-rest-geocoding": "^4.0.3",
+    "@esri/arcgis-rest-request": "^4.5.1",
+    "argon2": "^0.43.0",
     "better-sqlite3": "^11.10.0",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
     "nodemon": "^3.1.10"
   },
   "name": "exercise",

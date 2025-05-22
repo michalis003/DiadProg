@@ -18,6 +18,24 @@ app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: false }));
 
 
+// session
+import taskSession from './app_setup/app_setup_session.mjs'
+app.use(taskSession);
+
+app.use((req, res, next) => {
+    if (req.session) {
+       res.locals.userId = req.session.loggedUserId;
+    } 
+    else {
+       res.locals.userId = null;
+    }
+
+    next();
+ });
+
+//  app.use(){}
+ 
+
 
 import { router } from './router/router.mjs'; // import the router from router.mjs
 

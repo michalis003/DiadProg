@@ -1,18 +1,19 @@
 #home_page_grip{
     display: grid;
-    grid-template-rows: auto 1.5fr auto;
-    /* min-height: 100vh; */
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh; /* Γεμίζει όλο το viewport */
+
 }
 
-footer{
+/* footer{
     background-color: black;
     color: blue;
     
-    /* position: fixed; */
+    //position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    /* height: 8rem; */
+    //height: 8rem;
     color: white;
     text-align: center;
     height: auto;
@@ -20,7 +21,18 @@ footer{
 
     list-style-type: none;
 
-}
+} */
+.footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+  }
+
+#home_page_grip > div {
+    padding-bottom: 1%; /* Ίδιο με το ύψος του footer */
+  }
+  
 
 .contenier{
     margin: 2rem;
