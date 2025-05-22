@@ -1,4 +1,9 @@
 import { default as bettersqlite3 } from 'better-sqlite3';
+import  argon2  from 'argon2';
+
+import { ApiKeyManager } from '@esri/arcgis-rest-request';
+import { geocode } from '@esri/arcgis-rest-geocoding';
+
 
 const db = new bettersqlite3(`${import.meta.dirname}/../data/database.db`, { fileMustExist: true });
 console.log(import.meta.dirname);
@@ -63,4 +68,163 @@ function shutdown() {
     }
  }
 
+
  export{getAkinito, findAkinito}
+
+ export let getUserByUsername = async (username) => {
+   const stmt = await db.prepare("SELECT id, username, password FROM USER WHERE username = ? LIMIT 0, 1");
+   try {
+       const user = await stmt.get(username);
+       return user;
+   } catch (err) {
+       throw err;
+   }
+}
+
+
+export let findUserByUsernamePassword = async (username, password) => {
+   //Φέρε μόνο μια εγγραφή (το LIMIT 0, 1) που να έχει username και password ίσο με username και password 
+   const stmt = await db.prepare("SELECT username FROM user WHERE username = ? and password = ? LIMIT 0, 1");
+   try {
+       const user = await stmt.run(username, password);
+   } catch (err) {
+       throw err;
+   }
+}
+
+//Η συνάρτηση δημιουργεί έναν νέο χρήστη
+export let registerUserNoPass = async function (username) {
+   // ελέγχουμε αν υπάρχει χρήστης με αυτό το username
+   const userId = getUserByUsername(username);
+   if (userId != undefined) {
+       return { message: "Υπάρχει ήδη χρήστης με αυτό το όνομα" };
+   } else {
+       try {
+           const stmt = await db.prepare('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?, ?, ?)');
+           const info = await stmt.run(username, username);
+           return info.lastInsertRowid;
+       } catch (err) {
+           throw err;
+       }
+   }
+}
+
+//Η συνάρτηση δημιουργεί έναν νέο χρήστη με password
+export let registerUser = async function (username, password,name, email, phone, com_hours) {
+   // ελέγχουμε αν υπάρχει χρήστης με αυτό το username
+   const userId = await getUserByUsername(username);
+   if (userId != undefined) {
+       return { message: "Υπάρχει ήδη χρήστης με αυτό το όνομα" };
+   } else {
+       try {
+           const hashedPassword = await argon2.hash(password, 10);
+           const stmt = await db.prepare('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?, ?)');
+           const info = await stmt.run(username, hashedPassword, name, email, phone, com_hours);
+           return info.lastInsertRowid;
+       } catch (error) {
+           throw error;
+       }
+   }
+}
+
+export let doSubmit_toDB = async function (userID, price, surface, type, address,
+    levels=undefined, 
+    level=undefined, 
+    kitchen=undefined, 
+    bathroom=undefined,
+    living_room=undefined,
+    heating=undefined,
+    constr_year=undefined,
+    available=undefined,
+    desc=undefined,
+    location=undefined) {
+    try{
+        let attr = "(user_id, price, surface, type, address, x, y";
+        let nm = "(?, ?, ?, ?, ?, ?, ?"
+
+        // // FIND X AND Y 
+        // const apiKey = process.env.Geo_apiKey;
+        // const authentication = ApiKeyManager.fromKey(apiKey);
+
+        // geocode({
+        //     address: address,
+        //     postal: "26225",
+        //     countryCode: "GR",
+        //     authentication
+        // }).then((res) => {
+        //     console.log(res.candidates);
+        // })
+        // console.log(process.env.Geo_apiKey);
+        // let x = res.candidates.x
+        // let y = res.candidates.y
+        let x = "";
+        let y ="";
+
+        const params = [userID, price, surface, type, address, x, y];
+
+        if (levels!==undefined || levels!=""){
+            attr += ",levels";
+            params.push(levels);
+            nm +=", ?"
+        }
+        if (level!==undefined) {
+            attr +=", level";
+            params.push(level);
+            nm +=", ?"
+        }
+        if (kitchen!==undefined) {
+            attr +=", kitchen";
+            params.push(kitchen);
+            nm +=", ?"
+        }
+        if (bathroom!==undefined) {
+            attr +=", bathroom";
+            params.push(bathroom);
+            nm +=", ?"
+        }
+        if (living_room!==undefined) {
+            attr +=", living_room";
+            params.push(living_room);
+            nm +=", ?"
+        }
+        if (heating!==undefined) {
+            attr +=", heating";
+            params.push(heating);
+            nm +=", ?"
+        }
+        if (constr_year!==undefined) {
+            attr +=", constr_year";
+            params.push(constr_year);
+            nm +=", ?"
+        }
+        if (available!==undefined) {
+            attr +=", available";
+            params.push(available);
+            nm +=", ?"
+        }
+        if (desc!==undefined) {
+            attr +=", desc";
+            params.push(desc);
+            nm +=", ?"
+        }
+        if (location!==undefined) {
+            attr +=", location";
+            params.push(location);
+            nm +=", ?"
+        }
+
+        attr +=")"
+        nm +=")"
+
+        let quer="INSERT INTO AKINITO "+attr+ "VALUES" + nm;
+        const insert = db.prepare(quer);
+        const result = insert.run(...params);
+
+        console.log('Inserted ID:', result.lastInsertRowid);
+
+    }
+    catch(err){
+        console.log("ERRORRRR!!!")
+        console.log(err)
+    }
+ }
