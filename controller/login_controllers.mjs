@@ -5,7 +5,7 @@ const model = await import(`../model/model.mjs`);
 
 
 export let showLogInForm = function (req, res) {
-    res.render('login-password', { model: process.env.MODEL });
+    res.render('login', { model: process.env.MODEL });
  };
  
  export let showRegisterForm = function (req, res) {
@@ -13,12 +13,14 @@ export let showLogInForm = function (req, res) {
  };
  
  export let doRegister = async function (req, res) {
+   console.log("Do Register Func")
+   console.log(req.body)
     try {
        const registrationResult = await model.registerUser(req.body.username, req.body.password, req.body.namesur, req.body.email, req.body.phone, req.body.com_time);
        if (registrationResult?.message) {
           res.render('register-password', { message: registrationResult.message });
        } else {
-          res.render('login-password', { model: process.env.MODEL });
+          res.render('login', { model: process.env.MODEL });
        }
     } catch (error) {
        throw error;
