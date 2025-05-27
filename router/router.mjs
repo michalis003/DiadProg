@@ -24,4 +24,8 @@ router.post('/submit', controllerLogin.checkAuthenticated, controller.doSubmit);
 // Profile
 router.get('/profile', controller.showProfile)
 
+
+// Like
+router.post("/like", controller.likeProp)
+
 export{ router };

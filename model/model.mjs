@@ -323,3 +323,26 @@ export let doSubmit_toDB = async function (userID, price, surface, type, address
 
     return result
  }
+
+ export let findPropByUserId = async function(userId){
+    let quer = "SELECT * FROM AKINITO WHERE USER_ID=?"
+    const insert = db.prepare(quer);
+    const result = await insert.all(userId);
+
+    return result
+ }
+
+ export let findLikedPropByUserId = async function(userId){
+    let quer = "SELECT p.* FROM ARESEI a JOIN AKINITO p ON a.prop_id = p.prop_id WHERE a.buyer_id = ?;"
+    const insert = db.prepare(quer);
+    const result = await insert.all(userId);
+
+    return result
+ }
+
+
+ export let likeProp = async function(userId, propId){
+    let quer = "INSERT INTO ARESEI VALUES (?,?) "
+    const insert = db.prepare(quer);
+    const result = insert.run(userId, propId);
+ }

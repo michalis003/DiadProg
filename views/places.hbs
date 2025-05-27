@@ -48,7 +48,7 @@
             </div>
 
         </div>
-        <div class="property-section ">
+        <div class="property-section" id="search_section">
             {{#each properties}}
                 <div class="property-card">
                   <div class="place_grid_cont">
@@ -61,7 +61,14 @@
                           <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
                           <p><strong>Περιγραφή:</strong> {{desc}}</p>
                       </div>
-                     <div  class="column">test</div>
+                     <div  class="column">
+                       {{#if ../userId}}
+                          <form action="/like" method="post">
+                            <input type="hidden" name="propertyId" value={{prop_id}}>
+                            <button type="submit">Like</button>
+                          </form>
+                        {{/if}}
+                      </div>
                   </div>
                 </div>
             {{/each}}
@@ -69,9 +76,9 @@
 
         <div>
           <div class="pagination">
-              <button onclick="prevPage()">« Προηγούμενη</button>
-              <span id="pageNum">1</span>
-              <button onclick="nextPage()">Επόμενη »</button>
+            <button onclick="prevPage('search_section')">« Προηγούμενη</button>
+            <span id="pageNum-search_section">1</span>
+            <button onclick="nextPage('search_section')">Επόμενη »</button>
           </div>
         </div>
         

@@ -21,17 +21,16 @@ let getMainPage = function(req, res) {
 let getSearchPage = function(req, res) {
     try{
         let spitia;
-        if (req.query.perioxi!="" || req.query.katidoria != "none" || req.query.min_price!="" || req.query.max_price!="" || req.query.min_emvadon!="" ||req.query.max_emvadon!=""){
+        if (req.query.perioxi==undefined & req.query.katidoria == undefined & req.query.min_price==undefined & req.query.max_price==undefined & req.query.min_emvadon==undefined & req.query.max_emvadon==undefined){
+            spitia = model.getAkinito();
+        }
+
+        else if (req.query.perioxi!="" || req.query.katidoria != "none" || req.query.min_price!="" || req.query.max_price!="" || req.query.min_emvadon!="" ||req.query.max_emvadon!=""){
             spitia = model.findAkinito(req.query.perioxi,req.query.katidoria,req.query.min_price,req.query.max_price,req.query.min_emvadon, req.query.max_emvadon);            
 
-            console.log("test2");
-            console.log(req.session.loggedUserId);
         }
         else{
             spitia = model.getAkinito();
-            console.log("test");
-            console.log(req.session.loggedUserId);
-
         }
         res.render('places', {properties: spitia, prop:JSON.stringify(spitia)})
     }
@@ -75,12 +74,24 @@ let doSubmit = function(req, res){
 export let showProfile = async function(req, res) {
     try{
         let us = await model.findUserById(req.session.loggedUserId)
-        res.render('profile', {user: us})
-        console.log(req.session.loggedUserId)
-        console.log(us.name_sur)
-        console.log(us)
+        let pr = await model.findPropByUserId(req.session.loggedUserId)
+        let like = await model.findLikedPropByUserId(req.session.loggedUserId)
+
+        console.log(like)
+
+        res.render('profile', {user: us, prop: pr, liked: like})
     }
     catch(err){res.send(err.message)}
+}
+
+export let likeProp = async function(req, res){
+    try{
+        model.likeProp(req.session.loggedUserId,req.body.propertyId)
+        res.redirect('/searchPage')
+    }
+    catch(err){
+        res.send(err.message)
+    }
 }
 
 

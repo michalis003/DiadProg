@@ -25,6 +25,9 @@
         <form action="/logout" method="POST" style="display: inline;">
             <button type="submit">Αποσύνδεση</button>
         </form>
+        <form action="/profile" method="GET">
+            <button type="submit">Profile</button>
+        </form>
         {{else}}
         <a href="/login"><button>Σύνδεση</button></a>
         {{/if}}
@@ -78,7 +81,7 @@
     
   </div>
 
-<script src="/scripts/srcbar.js"></script>
+<script src="/scripts/srcbar.js" defer></script>
 <script src="/scripts/submit.js"></script>
 
 <script src="/scripts/map.js"></script>
