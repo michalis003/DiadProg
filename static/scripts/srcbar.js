@@ -1,41 +1,56 @@
-console.log("File load")
-document.querySelectorAll('.drop2 a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault(); // prevent jump to top
-        const selectedText = this.textContent;
-        document.querySelector('.srccat').textContent = selectedText;
-        });
-});
 
-const allCards = Array.from(document.querySelectorAll('.property-card'));
-let currentPage = 1;
+let currentPageMap = {
+    "my_prop": 1,
+    "favorities": 1,
+    "search_section": 1
+};
+
 const itemsPerPage = 2;
 
-function showPage(page) {
-const start = (page - 1) * itemsPerPage;
-const end = start + itemsPerPage;
+function showPage(sectionId, page) {
+    const section = document.getElementById(sectionId);
+    const cards = Array.from(section.querySelectorAll('.property-card'));
 
-allCards.forEach((card, index) => {
-    card.style.display = index >= start && index < end ? 'block' : 'none';
-});
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
 
-document.getElementById('pageNum').textContent = page;
+    cards.forEach((card, index) => {
+        card.style.display = index >= start && index < end ? 'block' : 'none';
+    });
+
+    currentPageMap[sectionId] = page;
+
+    const pageNumSpan = document.getElementById(`pageNum-${sectionId}`);
+    if (pageNumSpan) {
+        pageNumSpan.textContent = page;
+    }
 }
 
-function nextPage() {
-if ((currentPage * itemsPerPage) < allCards.length) {
-    currentPage++;
-    showPage(currentPage);
-}
+function nextPage(sectionId) {
+    const section = document.getElementById(sectionId);
+    const cards = section.querySelectorAll('.property-card');
+    let currentPage = currentPageMap[sectionId];
+
+    if ((currentPage * itemsPerPage) < cards.length) {
+        currentPage++;
+        showPage(sectionId, currentPage);
+    }
 }
 
-function prevPage() {
-if (currentPage > 1) {
-    currentPage--;
-    showPage(currentPage);
-}
+function prevPage(sectionId) {
+    let currentPage = currentPageMap[sectionId];
+    if (currentPage > 1) {
+        currentPage--;
+        showPage(sectionId, currentPage);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-showPage(currentPage);
+    const sections = ["my_prop", "favorities", "search_section"];
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            showPage(id, 1);
+        }
+    });
 });
