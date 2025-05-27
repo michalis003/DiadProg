@@ -21,4 +21,7 @@ router.post('/register', controllerLogin.doRegister);
 router.get('/submit', controller.showSubmit);
 router.post('/submit', controller.doSubmit);
 
+// Profile
+router.get('/profile', controller.showProfile)
+
 export{ router };

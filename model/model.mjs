@@ -5,6 +5,7 @@ import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { geocode } from '@esri/arcgis-rest-geocoding';
 // import {NodeGeocoder} from 'node-geocoder';
 import NodeGeocoder from 'node-geocoder';
+import e from 'express';
 
 
 
@@ -272,4 +273,14 @@ export let doSubmit_toDB = async function (userID, price, surface, type, address
         console.log("ERRORRRR!!!")
         console.log(err)
     }
+ }
+
+
+
+ export let findUserById = async function(userId){
+    let quer = "SELECT * FROM USER WHERE ID=?"
+    const insert = db.prepare(quer);
+    const result = await insert.get(userId);
+
+    return result
  }

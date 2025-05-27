@@ -1,0 +1,67 @@
+<div class="container_submit">
+
+    <div class="sidebar">
+        <h3>Ενότητες</h3>
+        <ul>
+            <li class="active" onclick="showSection('personal_info', this)">Προσωπικά Στοιχεία</li>
+            <li onclick="showSection('my_prop', this)">Οι Αγγελίες μου</li>
+            <li onclick="showSection('favorities', this)">Αγαπημένα</li>
+            <li onclick="showSection('change_info', this)">Αλλαγή Στοιχείων</li>
+        </ul>
+    </div>
+
+    <div class="form-section">
+        
+
+
+        <div id="personal_info" class="form-part active">
+            <h2 class="header">Προσωπικά Στοιχεία</h2>
+            <div class="form-group">
+                <div class="user-card">
+                    <div class="user-avatar">
+                        <img src="img/profile_image.webp" alt="User Avatar">
+                    </div>
+                    <div class="user-info">
+                        <h3>Καλωσήρθες, {{user.name_sur}}</h3>
+                        <p>Email: {{user.email}}</p>
+                        <p>Τηλέφωνο:  {{user.tel}}</p>
+                        <p>Ώρες Επικοινωνίας: {{user.comm_hours}}</p>
+                        <button class="logout-btn">Αποσύνδεση</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="my_prop" class="form-part">
+            <h2 class="header">Οι Αγγελίες μου</h2>
+            <div class="form-group">
+                
+            </div>
+            <div class="form-group">
+               
+            </div>
+        </div>
+
+        <div id="favorities" class="form-part">
+            <h2 class="header">Αγαπημένα</h2>
+            <div class="form-group">
+                
+            </div>
+            <div class="form-group">
+                
+            </div>
+        </div>
+
+        <div id="change_info" class="form-part">
+            <h2 class="header">Αλλαγή Στοιχείων</h2>
+            <div class="form-group">
+                
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+

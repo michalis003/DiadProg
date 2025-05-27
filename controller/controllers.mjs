@@ -72,5 +72,16 @@ let doSubmit = function(req, res){
     catch(err){res.send(err.message)}
 }
 
+export let showProfile = async function(req, res) {
+    try{
+        let us = await model.findUserById(req.session.loggedUserId)
+        res.render('profile', {user: us})
+        console.log(req.session.loggedUserId)
+        console.log(us.name_sur)
+        console.log(us)
+    }
+    catch(err){res.send(err.message)}
+}
+
 
 export {getMainPage, getSearchPage, showSubmit, doSubmit};
