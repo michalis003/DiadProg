@@ -32,7 +32,14 @@ let getSearchPage = function(req, res) {
         else{
             spitia = model.getAkinito();
         }
-        res.render('places', {properties: spitia, prop:JSON.stringify(spitia)})
+
+        if (req.session.loggedUserId){
+            let likedProperties = model.findLikedPropByUserId(req.session.loggedUserId);
+            res.render('places', {properties: spitia, prop:JSON.stringify(spitia), likedProp : likedProperties})
+        }
+        else{
+            res.render('places', {properties: spitia, prop:JSON.stringify(spitia)})
+        }
     }
     catch(err){
         res.send(err.message)
