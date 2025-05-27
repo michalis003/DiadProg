@@ -146,56 +146,95 @@ export let doSubmit_toDB = async function (userID, price, surface, type, address
         let attr = "(user_id, price, surface, type, address, x, y";
         let nm = "(?, ?, ?, ?, ?, ?, ?"
 
-        // // FIND X AND Y 
-        // const apiKey = process.env.Geo_apiKey;
-        // const authentication = ApiKeyManager.fromKey(apiKey);
+        // // Setup geocoder with OpenStreetMap
+        // const options = {
+        //     provider: 'openstreetmap'
+        // };
 
-        // geocode({
-        //     address: address,
-        //     postal: "26225",
-        //     countryCode: "GR",
-        //     authentication
-        // }).then((res) => {
-        //     console.log(res.candidates);
-        // })
-        // console.log(process.env.Geo_apiKey);
-        // let x = res.candidates.x
-        // let y = res.candidates.y
+        // const geocoder = NodeGeocoder(options);
 
-        // const NodeGeocoder = require('node-geocoder');
+        // // Sample address
+        // // const address = '1600 Amphitheatre Parkway, Mountain View, CA';
+        // const addr = address +", " + location;
 
-        // Setup geocoder with OpenStreetMap
+        // async function getCoordinates(address) {
+        // try {
+        //     const res = await geocoder.geocode(address);
+        //     console.log(addr)
+        //     console.log(res[0].latitude);
+        //     console.log(res[0].longitude);
+        //     console.log(res[0]);
+        //     let x = res[0].latitude;
+        //     let y = res[0].longitude;
+        //     console.log("res0")
+        //     return {x, y};
+        //     // Output includes: latitude, longitude, country, city, etc.
+        // } catch (err) {
+        //     console.error('Geocoding error:', err);
+        // }
+        // }
+
+        // Setup base geocoder options
+        const baseOptions = {
+        provider: 'google',
+        apiKey: 'AIzaSyAlQLepV6ecLWTbDM2u_CRkM20VIFkVtgk', // Secure in production!
+        region: 'gr',
+        };
+
+        // Construct full address
+        const addr = address + ", " + location;
+
+        // Get coordinates from a specific language
+        async function getCoordinatesByLanguage(address, language) {
         const options = {
-            provider: 'openstreetmap'
+            ...baseOptions,
+            language,
         };
 
         const geocoder = NodeGeocoder(options);
 
-        // Sample address
-        // const address = '1600 Amphitheatre Parkway, Mountain View, CA';
-        const addr = address +", " + location;
-
-        async function getCoordinates(address) {
         try {
             const res = await geocoder.geocode(address);
-            console.log(addr)
-            console.log(res[0].latitude);
-            console.log(res[0].longitude);
-            console.log(res[0]);
-            let x = res[0].latitude;
-            let y = res[0].longitude;
-            console.log("res0")
-            return {x, y};
-            // Output includes: latitude, longitude, country, city, etc.
+            if (res && res[0]) {
+            return {
+                x: res[0].latitude,
+                y: res[0].longitude,
+                formattedAddress: res[0].formattedAddress,
+                language,
+            };
+            } else {
+            throw new Error('No result');
+            }
         } catch (err) {
-            console.error('Geocoding error:', err);
+            console.error(`Geocoding error [${language}]:`, err.message);
+            return null;
         }
         }
 
-        // let x;
-        // let y;
+        // Wrapper function returning only { x, y }
+        async function getCoordinates(address) {
+        const [greek, english] = await Promise.all([
+            getCoordinatesByLanguage(address, 'el'),
+            getCoordinatesByLanguage(address, 'en'),
+        ]);
 
-        const {x, y}  = await getCoordinates(addr);
+        // Prefer Greek result, fallback to English
+        const result = greek || english;
+
+        if (!result) {
+            throw new Error("Failed to geocode address in both languages");
+        }
+
+        console.log("Using geocode from:", result.language);
+        console.log("Lat:", result.x, "Lng:", result.y);
+
+        return { x: result.x, y: result.y };
+        }
+
+        // Usage
+        const { x, y } = await getCoordinates(addr);
+
+
         console.log(getCoordinates(addr))
         console.log("τεστ")
         console.log(x)
