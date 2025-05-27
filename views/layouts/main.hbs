@@ -20,7 +20,13 @@
         <div id="textNavBar">NavBar</div>
         <a href="/submit"><button>Καταχώρηση Αγγελίας</button></a>
         <button><img src="img/hm_dropdown.png" alt=""></button>
-        <a href="/login"> <button>Σύνδεση</button> </a>
+        {{#if userId}}
+        <form action="/logout" method="POST" style="display: inline;">
+            <button type="submit">Αποσύνδεση</button>
+        </form>
+        {{else}}
+        <a href="/login"><button>Σύνδεση</button></a>
+        {{/if}}
     </nav>
     <div>{{{body}}}</div>
     

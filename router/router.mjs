@@ -11,14 +11,14 @@ router.get('/searchPage',controller.getSearchPage);
 // Login/ Logout
 router.get('/login', controllerLogin.showLogInForm);
 router.post('/login', controllerLogin.doLogin);
-router.get('/logout', controllerLogin.doLogout);
+router.post('/logout', controllerLogin.doLogout);
 
 // Register
 router.get('/register', controllerLogin.showRegisterForm);
 router.post('/register', controllerLogin.doRegister);
 
 // Submit
-router.get('/submit', controller.showSubmit);
-router.post('/submit', controller.doSubmit);
+router.get('/submit', controllerLogin.checkAuthenticated, controller.showSubmit);
+router.post('/submit', controllerLogin.checkAuthenticated, controller.doSubmit);
 
 export{ router };
