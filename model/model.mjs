@@ -3,6 +3,10 @@ import  argon2  from 'argon2';
 
 import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { geocode } from '@esri/arcgis-rest-geocoding';
+// import {NodeGeocoder} from 'node-geocoder';
+import NodeGeocoder from 'node-geocoder';
+
+
 
 
 const db = new bettersqlite3(`${import.meta.dirname}/../data/database.db`, { fileMustExist: true });
@@ -157,8 +161,49 @@ export let doSubmit_toDB = async function (userID, price, surface, type, address
         // console.log(process.env.Geo_apiKey);
         // let x = res.candidates.x
         // let y = res.candidates.y
-        let x = "";
-        let y ="";
+
+        // const NodeGeocoder = require('node-geocoder');
+
+        // Setup geocoder with OpenStreetMap
+        const options = {
+            provider: 'openstreetmap'
+        };
+
+        const geocoder = NodeGeocoder(options);
+
+        // Sample address
+        // const address = '1600 Amphitheatre Parkway, Mountain View, CA';
+        const addr = address +", " + location;
+
+        async function getCoordinates(address) {
+        try {
+            const res = await geocoder.geocode(address);
+            console.log(addr)
+            console.log(res[0].latitude);
+            console.log(res[0].longitude);
+            console.log(res[0]);
+            let x = res[0].latitude;
+            let y = res[0].longitude;
+            console.log("res0")
+            return {x, y};
+            // Output includes: latitude, longitude, country, city, etc.
+        } catch (err) {
+            console.error('Geocoding error:', err);
+        }
+        }
+
+        // let x;
+        // let y;
+
+        const {x, y}  = await getCoordinates(addr);
+        console.log(getCoordinates(addr))
+        console.log("τεστ")
+        console.log(x)
+        console.log(y)
+
+
+        // let x = "";
+        // let y ="";
 
         const params = [userID, price, surface, type, address, x, y];
 

@@ -1,0 +1,73 @@
+<div class="login-wrap">
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+    <div class="login-form">
+        <form action="/login" method="post">
+
+            <div class="sign-in-htm">
+                <div class="group">
+                    <label for="user" class="label">Username</label>
+                    <input id="user" type="text" class="input" name="username">
+                </div>
+                <div class="group">
+                    <label for="pass" class="label">Password</label>
+                    <input id="pass" type="password" class="input" data-type="password" name="password" required="required">
+                </div>
+                <div class="group">
+                <input type="submit" class="button" value="Sign In">
+                </div>
+
+                {{#if message}}
+                    <div class="alert alert-primary"
+                        role="alert">
+                        {{message}}
+                    </div>
+                {{/if}}
+            </div>
+
+        </form>
+      
+      <div class="sign-up-htm">
+        <form action="/register" method="post">
+
+            <div class="group">
+                <label for="user" class="label">Username</label>
+                <input id="user" type="text" class="input" name="username"
+                           required="required">
+            </div>
+            <div class="group">
+                <label for="nameuser" class="label">ΌνομαΕπωνυμο</label>
+                <input type="text" class="input" name="namesur">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Password</label>
+                <input id="pass" type="password" class="input" data-type="password" name="password">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Email Address</label>
+                <input id="pass" type="email" class="input" name="email">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Phone</label>
+                <input id="pass" type="tel" class="input" name="phone">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Ωρες εποικηνωνίας</label>
+                <input id="pass" type="text" class="input" name="com_time">
+            </div>
+            {{#if message}}
+                <div class="alert alert-primary"
+                     role="alert">
+                    {{message}}
+                </div>
+            {{/if}}
+            <div class="group">
+                <button type="submit"
+                        class="btn btn-primary login-btn btn-block">Εγγραφή</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -62,7 +62,6 @@ let doSubmit = function(req, res){
             req.body.heating,
             req.body.constr_year,
             req.body.available,
-            req.body.constr_year,
             req.body.desc,
             req.body.location,
             );
