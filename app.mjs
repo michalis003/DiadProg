@@ -23,19 +23,10 @@ import taskSession from './app_setup/app_setup_session.mjs'
 app.use(taskSession);
 
 app.use((req, res, next) => {
-    if (req.session) {
-       res.locals.userId = req.session.loggedUserId;
-    } 
-    else {
-       res.locals.userId = null;
-    }
-
-    next();
- });
-
-//  app.use(){}
- 
-
+  res.locals.userId = req.session?.loggedUserId || null;
+  res.locals.isLoggedIn = !!req.session?.loggedUserId; // Optional: for easier checks
+  next();
+});
 
 import { router } from './router/router.mjs'; // import the router from router.mjs
 
