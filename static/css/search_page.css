@@ -106,3 +106,18 @@
  */
 
 }
+
+
+.drop a{
+  color: #b1dd40;
+  background-color: #3d5171;
+}
+
+.drop a:hover{
+  background-color: #448afd;
+}
+
+
+.property-section .user-info h3{
+  color: white;
+}

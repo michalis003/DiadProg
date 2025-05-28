@@ -55,7 +55,7 @@ body{
 } 
 
 .footer_info a:link, a:visited, a:hover{
-    color: #b1dd42;
+    color: white;
 }
 
 footer li {
@@ -162,6 +162,10 @@ button{
 .srcval:hover, .srcloc:hover, .srccat:hover, .srcsurf:hover, .btn:hover {
   /* background-color: #b1dd42; */
 }
+/* 
+.acc-body{
+  color: lightgray;
+} */
 
 
 #accordionExample{
@@ -171,7 +175,7 @@ button{
 1161ee 
 F938DF*/
 .navbar button{
-  background-color: #1161ee; 
+  background-color: #b1dd42; 
   color: #272b32;
   border: none;
   padding: 8px 15px;
@@ -184,7 +188,7 @@ F938DF*/
 }
 
 .srcsrc{
-  background-color: #1161ee;
+  background-color: #b1dd42;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -196,7 +200,7 @@ F938DF*/
   color: white !important;
 }
 .accordion-item, .accordion-header{
-  background-color: #b1dd42 !important;
+  background-color: #448AFD !important;
 }
 
 
@@ -388,11 +392,11 @@ F938DF*/
 
   div .property-card{
     background-color:#3d5171;
-    color:#b1dd42;
+    color:#5cc9c0;
   }
 
   .property-card strong, .property-card h3{
-    color:#448afd;
+    color:white;
   }
 
 

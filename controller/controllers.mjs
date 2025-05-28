@@ -91,6 +91,17 @@ let getSearchPage = async function(req, res) {
       spitia = await model.getAkinito();
     }
 
+    for (let i = 0; i < spitia.length; i++) {
+      const userResult = await model.findUserByPropId(spitia[i].prop_id);
+      spitia[i].user = userResult.length > 0 ? userResult[0] : null;
+    }
+    spitia = spitia.map(p => ({
+      ...p,
+      is_agora: p.type === "Αγορά"
+    }));
+    
+    
+
     if (req.session.loggedUserId) {
       let likedProperties = (await model.findLikedPropByUserId(req.session.loggedUserId)) || [];
 
@@ -228,6 +239,17 @@ export let showProfile = async function(req, res) {
         let pr = await model.findPropByUserId(req.session.loggedUserId)
         let like = await model.findLikedPropByUserId(req.session.loggedUserId)
         
+
+        for (let i = 0; i < like.length; i++) {
+          const userResult = await model.findUserByPropId(like[i].prop_id);
+          like[i].user = userResult.length > 0 ? userResult[0] : null;
+        }
+        like = like.map(p => ({
+          ...p,
+          is_agora: p.type === "Αγορά"
+        }));
+    
+        
         // Use correct property key for likedProperties array elements — you showed prop_id before
         const likedIds = like.map(p => p.prop_id);
 
@@ -295,6 +317,17 @@ export let showProfileFavor = async function(req, res) {
       let pr = await model.findPropByUserId(req.session.loggedUserId)
       let like = await model.findLikedPropByUserId(req.session.loggedUserId)
       
+
+      for (let i = 0; i < like.length; i++) {
+        const userResult = await model.findUserByPropId(like[i].prop_id);
+        like[i].user = userResult.length > 0 ? userResult[0] : null;
+      }
+      like = like.map(p => ({
+        ...p,
+        is_agora: p.type === "Αγορά"
+      }));
+  
+
       // Use correct property key for likedProperties array elements — you showed prop_id before
       const likedIds = like.map(p => p.prop_id);
 
@@ -332,6 +365,23 @@ export let showProfileProp = async function(req, res) {
       let pr = await model.findPropByUserId(req.session.loggedUserId)
       let like = await model.findLikedPropByUserId(req.session.loggedUserId)
 
+
+      for (let i = 0; i < like.length; i++) {
+        const userResult = await model.findUserByPropId(like[i].prop_id);
+        like[i].user = userResult.length > 0 ? userResult[0] : null;
+      }
+      like = like.map(p => ({
+        ...p,
+        is_agora: p.type === "Αγορά"
+      }));
+
+
+      const likedIds = like.map(p => p.prop_id);
+      like = like.map(p => ({
+        ...p,
+        liked: likedIds.includes(p.prop_id),
+      }));
+  
 
 
       res.render('profile_prop', {user: us, prop: pr, likedAll: like})

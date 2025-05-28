@@ -27,7 +27,7 @@
     margin: 3px 0;
 }
 
-.logout-btn {
+.logout-btn, #change_prof_btn{
     margin-top: 10px;
     background-color: #5cc9c0;
     color: #272b32;
@@ -39,23 +39,31 @@
     transition: background-color 0.3s ease;
 }
 
-.logout-btn:hover {
+.logout-btn:hover, #change_prof_btn:hover{
     background-color: #b1dd42;
 }
 
 .pagination button{
-    background-color: #1161ee; 
+    background-color: #3d5171; 
     color: #b1dd42;
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     cursor: pointer;
     transition: background-color 0.3s ease;
     /* margin-top: 2px; */
 }
 
 #pageNum-search_section, #pageNum-favorities, #pageNum-my_prop{
-    color: #5cc9c0;
+    color: white;
+}
+
+.form-field label{
+    color:white;
+}
+
+.form-field input{
+    color: gray;
 }
