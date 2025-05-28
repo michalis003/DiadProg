@@ -93,7 +93,7 @@ npm install
 
 Run the server:
 
-node app.js
+npm run watch
 
 Open your browser and go to:http://localhost:3000
 
