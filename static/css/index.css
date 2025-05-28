@@ -398,7 +398,7 @@ F938DF*/
 
   /* Like-Unlike */
 
-.like-toggle-btn{
+.like-toggle-btn , .delete-btn{
   position: relative;
   top: 1%;
   left: 95%;

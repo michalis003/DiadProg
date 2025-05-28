@@ -17,12 +17,12 @@
                 <div class="group">
                 <input type="submit" class="button" value="Sign In">
                 </div>
-
+                
                 {{#if message}}
-                    <div class="alert alert-primary"
-                        role="alert">
-                        {{message}}
-                    </div>
+                <div class="alert alert-primary"
+                     role="alert">
+                    {{message}}
+                </div>
                 {{/if}}
             </div>
 
@@ -56,12 +56,6 @@
                 <label for="pass" class="label">Ωρες εποικηνωνίας</label>
                 <input id="pass" type="text" class="input" name="com_time">
             </div>
-            {{#if message}}
-                <div class="alert alert-primary"
-                     role="alert">
-                    {{message}}
-                </div>
-            {{/if}}
             <div class="group">
                 <button type="submit"
                         class="btn btn-primary login-btn btn-block">Εγγραφή</button>

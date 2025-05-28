@@ -33,7 +33,7 @@ export let showLogInForm = function (req, res) {
  
     const user = await model.getUserByUsername(req.body.username);
     if (user == undefined || !user.password || !user.id) {
-       res.render('login-password', { message: 'Δε βρέθηκε αυτός ο χρήστης' });
+       res.render('login', { message: 'Δε βρέθηκε αυτός ο χρήστης' });
     } else {
        const match = await argon2d.verify(user.password, req.body.password ?? "");
        if (match) {

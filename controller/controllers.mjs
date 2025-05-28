@@ -227,9 +227,18 @@ export let showProfile = async function(req, res) {
         let us = await model.findUserById(req.session.loggedUserId)
         let pr = await model.findPropByUserId(req.session.loggedUserId)
         let like = await model.findLikedPropByUserId(req.session.loggedUserId)
+        
+        // Use correct property key for likedProperties array elements — you showed prop_id before
+        const likedIds = like.map(p => p.prop_id);
+
+        // Add 'liked' flag to each property
+        like = like.map(p => ({
+          ...p,
+          liked: likedIds.includes(p.prop_id),
+        }));
 
 
-        res.render('profile', {user: us, prop: pr, liked: like})
+        res.render('profile', {user: us, prop: pr, likedAll: like})
     }
     catch(err){res.send(err.message)}
 }
@@ -275,5 +284,59 @@ export let changeProfile = async function (req, res) {
 };
 
 
+export let showProfileFavor = async function(req, res) {
+  try{
+
+      const userId = req.session.loggedUserId;
+      if (!userId) {
+        return res.redirect('/login');
+      }
+      let us = await model.findUserById(req.session.loggedUserId)
+      let pr = await model.findPropByUserId(req.session.loggedUserId)
+      let like = await model.findLikedPropByUserId(req.session.loggedUserId)
+      
+      // Use correct property key for likedProperties array elements — you showed prop_id before
+      const likedIds = like.map(p => p.prop_id);
+
+      // Add 'liked' flag to each property
+      like = like.map(p => ({
+        ...p,
+        liked: likedIds.includes(p.prop_id),
+      }));
+
+
+      res.render('profile_favor', {user: us, prop: pr, likedAll: like})
+  }
+  catch(err){res.send(err.message)}
+}
+
+
+export let deleteProp = async function(req, res) {
+  try {
+      await model.deleteProp(req.body.propertyId);
+      res.status(200).json({ success: true}); // ✅ JSON response
+  } catch (err) {
+      res.status(500).json({ success: false, error: err.message });
+  }
+};
+
+
+export let showProfileProp = async function(req, res) {
+  try{
+
+      const userId = req.session.loggedUserId;
+      if (!userId) {
+        return res.redirect('/login');
+      }
+      let us = await model.findUserById(req.session.loggedUserId)
+      let pr = await model.findPropByUserId(req.session.loggedUserId)
+      let like = await model.findLikedPropByUserId(req.session.loggedUserId)
+
+
+
+      res.render('profile_prop', {user: us, prop: pr, likedAll: like})
+  }
+  catch(err){console.log(err.message)}
+}
 
 export {getMainPage, getSearchPage, showSubmit, doSubmit};

@@ -18,6 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           button.dataset.liked = (!liked).toString();
           img = button.querySelector('img');
+
+          if (window.location.pathname === '/profile') {
+
+            
+            window.location.href = '/profile_favor';
+
+          }
+          
+
           // button.textContent = liked ? 'Like' : 'Unlike';
           img.src = liked ? '/img/heart_empty.png' : '/img/heart_full.png'
         } else {

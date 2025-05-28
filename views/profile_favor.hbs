@@ -3,9 +3,9 @@
     <div class="sidebar" id="sidebar-container">
         <h3>Ενότητες</h3>
         <ul>
-            <li class="active" onclick="showSection('personal_info', this)">Προσωπικά Στοιχεία</li>
+            <li onclick="showSection('personal_info', this)">Προσωπικά Στοιχεία</li>
             <li onclick="showSection('my_prop', this)">Οι Αγγελίες μου</li>
-            <li onclick="showSection('favorities', this)">Αγαπημένα</li>
+            <li class="active" onclick="showSection('favorities', this)">Αγαπημένα</li>
             <li onclick="showSection('change_info', this)">Αλλαγή Στοιχείων</li>
         </ul>
     </div>
@@ -14,7 +14,7 @@
         
 
 
-        <div id="personal_info" class="form-part active">
+        <div id="personal_info" class="form-part">
             <h2 class="header">Προσωπικά Στοιχεία</h2>
             <div class="form-group">
                 <div class="user-card">
@@ -56,7 +56,6 @@
                                     <img src="img/delete.png" alt="delete">
                                 </button>
                             </div>
-
                         </div>
                         </div>
                     {{/each}}
@@ -72,7 +71,7 @@
             
         </div>
 
-        <div id="favorities" class="form-part">
+        <div id="favorities" class="form-part active">
             <h2 class="header">Αγαπημένα</h2>
             <div class="form-group">
                 <div class="property-section ">
