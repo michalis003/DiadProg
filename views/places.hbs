@@ -68,7 +68,13 @@
                         <button class="like-toggle-btn"
                                 data-prop-id="{{prop_id}}"
                                 data-liked="{{liked}}">
-                          {{#if liked}}Unlike{{else}}Like{{/if}}
+                          {{#if liked}}
+                            {{!-- Unlike --}}
+                            <img src="/img/heart_full.png" alt="like">
+                          {{else}}
+                            {{!-- Like --}}
+                            <img src="/img/heart_empty.png" alt="unlike">
+                          {{/if}}
                         </button>
                       {{/if}}
                       </div>
