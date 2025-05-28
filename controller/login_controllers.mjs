@@ -46,7 +46,7 @@ export let showLogInForm = function (req, res) {
  
           res.redirect(redirectTo);
        } else {
-          res.render('login-password', { message: 'Ο κωδικός πρόσβασης είναι λάθος' });
+          res.render('login', { message: 'Ο κωδικός πρόσβασης είναι λάθος' });
        }
     }
  };

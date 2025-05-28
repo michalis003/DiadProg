@@ -26,7 +26,9 @@
                         <p>Email: {{user.email}}</p>
                         <p>Τηλέφωνο:  {{user.tel}}</p>
                         <p>Ώρες Επικοινωνίας: {{user.comm_hours}}</p>
-                        <button class="logout-btn">Αποσύνδεση</button>
+                        <form action="/logout" method="POST" style="display: inline;">
+                            <button type="submit" class="logout-btn">Αποσύνδεση</button>
+                        </form>
                     </div>
                 </div>
 
@@ -46,6 +48,7 @@
                                 <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
                                 <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
                                 <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
+                                <p><strong>Διευθυνση:</strong> {{location}} , {{address}}</p>
                                 <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
                                 <p><strong>Περιγραφή:</strong> {{desc}}</p>
                             </div>
@@ -85,6 +88,7 @@
                                     <p><strong>Επιφάνεια:</strong> {{surface}} τ.μ</p>
                                     <p><strong>Μπάνια:</strong> {{bathroom}}, <strong>Κουζίνα:</strong> {{kitchen}}, <strong>Σαλόνι:</strong> {{living_room}}</p>
                                     <p><strong>Όροφοι:</strong> {{levels}}, <strong>Επίπεδο:</strong> {{level}}</p>
+                                    <p><strong>Διευθυνση:</strong> {{location}} , {{address}}</p>
                                     <p><strong>Έτος κατασκευής:</strong> {{constr_year}}</p>
                                     <p><strong>Περιγραφή:</strong> {{desc}}</p>
                                 </div>
@@ -102,6 +106,16 @@
                                         {{/if}}
                                         </button>
                                     {{/if}}
+                                    <div class="user-info">
+                                        {{#if is_agora}}
+                                        <h3>Πωλητής: {{user.name_sur}}</h3>
+                                        {{else}}
+                                        <h3>Ενοικιαστής: {{user.name_sur}}</h3>
+                                        {{/if}}
+                                        <p><strong>Email:</strong> {{user.email}}</p>
+                                        <p><strong>Τηλέφωνο:</strong>  {{user.tel}}</p>
+                                        <p><strong>Ώρες Επικοινωνίας:</strong> {{user.comm_hours}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -125,35 +139,42 @@
             <label for="username">Όνομα Χρήστη:</label>
             <input type="text" id="username" name="username" value="{{user.username}}" placeholder="π.χ. nikos123">
             </div>
+            <br>
 
             <div class="form-field">
             <label for="password">Νέος Κωδικός:</label>
             <input type="password" id="password" name="password" placeholder="Εισάγετε νέο κωδικό">
             </div>
+            <br>
 
             <div class="form-field">
             <label for="name_sur">Ονοματεπώνυμο:</label>
             <input type="text" id="name_sur" name="name_sur" value="{{user.name_sur}}" placeholder="π.χ. Νίκος Παπαδόπουλος">
             </div>
+            <br>
 
             <div class="form-field">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="{{user.email}}" placeholder="π.χ. example@mail.com">
             </div>
+            <br>
 
             <div class="form-field">
             <label for="tel">Τηλέφωνο:</label>
             <input type="tel" id="tel" name="tel" value="{{user.tel}}" placeholder="π.χ. 6901234567">
             </div>
+            <br>
 
             <div class="form-field">
             <label for="comm_hours">Ώρες Επικοινωνίας:</label>
             <input type="text" id="comm_hours" name="comm_hours" value="{{user.comm_hours}}" placeholder="π.χ. 09:00 - 17:00">
             </div>
+            <br>
 
             <div class="form-field">
-            <button type="submit" class="submit-btn">Αποθήκευση Αλλαγών</button>
+            <button type="submit" class="submit-btn" id="change_prof_btn">Αποθήκευση Αλλαγών</button>
             </div>
+            <br>
         </form>
         </div>
     </div>

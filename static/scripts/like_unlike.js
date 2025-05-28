@@ -20,10 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
           img = button.querySelector('img');
 
           if (window.location.pathname === '/profile') {
-
-            
             window.location.href = '/profile_favor';
-
+          }
+          if (window.location.pathname === '/profile_favor') {
+            window.location.href = '/profile_favor';
+          }
+          if (window.location.pathname === '/profile_prop') {
+            window.location.href = '/profile_favor';
           }
           
 

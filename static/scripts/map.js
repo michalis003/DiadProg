@@ -15,10 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    setTimeout(() => {
-    map.invalidateSize(); // Forces Leaflet to recalculate dimensions
-    map.setView([37.9838, 23.7275], 6); // Reset center just in case
-    }, 1);
 
     // Add markers
     properties.forEach(prop => {
@@ -26,4 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .addTo(map)
             .bindPopup(`<b>${prop.location} - ${prop.type}</b><br>Τιμή: ${prop.price}€`);
     });
+
+
+    setTimeout(() => {
+        map.invalidateSize(); // Forces Leaflet to recalculate dimensions
+        map.setView([37.9838, 23.7275], 6); // Reset center just in case
+        }, 5);
 });
