@@ -99,13 +99,43 @@
         </div>
 
         <div id="change_info" class="form-part">
-            <h2 class="header">Αλλαγή Στοιχείων</h2>
-            <div class="form-group">
-                
+        <h2 class="header">Αλλαγή Στοιχείων</h2>
+        <form action="/editProfile" method="POST" class="form-group">
+            <div class="form-field">
+            <label for="username">Όνομα Χρήστη:</label>
+            <input type="text" id="username" name="username" value="{{user.username}}" placeholder="π.χ. nikos123">
             </div>
+
+            <div class="form-field">
+            <label for="password">Νέος Κωδικός:</label>
+            <input type="password" id="password" name="password" placeholder="Εισάγετε νέο κωδικό">
+            </div>
+
+            <div class="form-field">
+            <label for="name_sur">Ονοματεπώνυμο:</label>
+            <input type="text" id="name_sur" name="name_sur" value="{{user.name_sur}}" placeholder="π.χ. Νίκος Παπαδόπουλος">
+            </div>
+
+            <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{user.email}}" placeholder="π.χ. example@mail.com">
+            </div>
+
+            <div class="form-field">
+            <label for="tel">Τηλέφωνο:</label>
+            <input type="tel" id="tel" name="tel" value="{{user.tel}}" placeholder="π.χ. 6901234567">
+            </div>
+
+            <div class="form-field">
+            <label for="comm_hours">Ώρες Επικοινωνίας:</label>
+            <input type="text" id="comm_hours" name="comm_hours" value="{{user.comm_hours}}" placeholder="π.χ. 09:00 - 17:00">
+            </div>
+
+            <div class="form-field">
+            <button type="submit" class="submit-btn">Αποθήκευση Αλλαγών</button>
+            </div>
+        </form>
         </div>
-
-
     </div>
 
 </div>
