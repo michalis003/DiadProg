@@ -352,3 +352,61 @@ export let unlikeProp = async function(userId, propId) {
     const del = db.prepare(query);
     const result = del.run(userId, propId);
 };
+
+export let editProfile = async function(userId, username, password, name_sur, email, tel, comm_hours) {
+  try {
+    const fields = [];
+    const values = [];
+
+    if (username !== undefined && username !== "") {
+      fields.push("username = ?");
+      values.push(username);
+    }
+
+    if (password !== undefined && password !== "") {
+      fields.push("password = ?");
+      const hashedPassword = await argon2.hash(password, 10);
+      values.push(hashedPassword);
+    }
+
+    if (name_sur !== undefined && name_sur !== "") {
+      fields.push("name_sur = ?");
+      values.push(name_sur);
+    }
+
+    if (email !== undefined && email !== "") {
+      fields.push("email = ?");
+      values.push(email);
+    }
+
+    if (tel !== undefined && tel !== "") {
+      fields.push("tel = ?");
+      values.push(tel);
+    }
+
+    if (comm_hours !== undefined && comm_hours !== "") {
+      fields.push("comm_hours = ?");
+      values.push(comm_hours);
+    }
+
+    if (fields.length === 0) {
+      throw new Error("No fields to update.");
+    }
+
+    const query = `
+      UPDATE USER
+      SET ${fields.join(", ")}
+      WHERE id = ?
+    `;
+
+    values.push(userId); // Add userId as last parameter for WHERE clause
+
+    const stmt = db.prepare(query);
+    const result = stmt.run(...values);
+
+    return result;
+  } catch (err) {
+    console.error("Error editing profile:", err.message);
+    throw err;
+  }
+};

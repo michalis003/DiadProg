@@ -24,9 +24,11 @@ router.post('/submit', controllerLogin.checkAuthenticated, controller.doSubmit);
 // Profile
 router.get('/profile', controller.showProfile)
 
-
 // Like-Unlike
 router.post("/like", controller.likeProp)
 router.post('/unlike', controller.unlikeProp)
+
+//Edit Profile
+router.post('/editProfile', controller.changeProfile)
 
 export{ router };

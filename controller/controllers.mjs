@@ -151,11 +151,15 @@ let doSubmit = function(req, res){
 
 export let showProfile = async function(req, res) {
     try{
+
+        const userId = req.session.loggedUserId;
+        if (!userId) {
+          res.redirect('/login');
+        }
         let us = await model.findUserById(req.session.loggedUserId)
         let pr = await model.findPropByUserId(req.session.loggedUserId)
         let like = await model.findLikedPropByUserId(req.session.loggedUserId)
 
-        console.log(like)
 
         res.render('profile', {user: us, prop: pr, liked: like})
     }
@@ -179,6 +183,29 @@ export let unlikeProp = async function(req, res) {
         res.status(500).json({ success: false, error: err.message });
     }
 };
+
+export let changeProfile = async function (req, res) {
+  try {
+    const userId = req.session.loggedUserId;
+    if (!userId) {
+      res.redirect('/login');
+    }
+
+    const { username, password, name_sur, email, tel, comm_hours } = req.body;
+
+
+    const result = await model.editProfile(userId, username, password, name_sur, email, tel, comm_hours);
+
+    if (result.changes === 0) {
+      return res.status(404).send("User not found or no changes made.");
+    }
+    res.redirect('/profile');
+  } catch (err) {
+    console.error("Error updating profile:", err);
+    res.status(500).send("Server error.");
+  }
+};
+
 
 
 export {getMainPage, getSearchPage, showSubmit, doSubmit};
