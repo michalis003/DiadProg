@@ -4,9 +4,12 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 
 
-
-
 const app = express()
+
+//for like button
+app.use(express.json()); // To parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // For URL-encoded forms, optional here
+
 // const router = express.Router();
 const port = process.env.PORT || '3000';
 

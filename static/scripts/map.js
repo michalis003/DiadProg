@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const raw = document.getElementById('properties-data').textContent;
@@ -17,24 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Example properties array — replace with actual data injection
-    // const properties = [
-    //     {
-    //         location: "Athens",
-    //         lat: 37.9838,
-    //         lng: 23.7275,
-    //         type: "Apartment",
-    //         price: "150000"
-    //     },
-    //     {
-    //         location: "Thessaloniki",
-    //         lat: 40.6401,
-    //         lng: 22.9444,
-    //         type: "House",
-    //         price: "200000"
-    //     }
-    // ];
-
+    setTimeout(() => {
+    map.invalidateSize(); // Forces Leaflet to recalculate dimensions
+    map.setView([37.9838, 23.7275], 6); // Reset center just in case
+    }, 1);
 
     // Add markers
     properties.forEach(prop => {

@@ -25,7 +25,8 @@ router.post('/submit', controllerLogin.checkAuthenticated, controller.doSubmit);
 router.get('/profile', controller.showProfile)
 
 
-// Like
+// Like-Unlike
 router.post("/like", controller.likeProp)
+router.post('/unlike', controller.unlikeProp)
 
 export{ router };
