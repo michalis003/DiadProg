@@ -353,6 +353,12 @@ export let unlikeProp = async function(userId, propId) {
     const result = del.run(userId, propId);
 };
 
+export let deleteProp = async function(propId) {
+    let query = "DELETE FROM AKINITO WHERE prop_id = ?";
+    const del = db.prepare(query);
+    const result = del.run(propId);
+};
+
 export let editProfile = async function(userId, username, password, name_sur, email, tel, comm_hours) {
   try {
     const fields = [];

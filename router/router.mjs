@@ -23,10 +23,15 @@ router.post('/submit', controllerLogin.checkAuthenticated, controller.doSubmit);
 
 // Profile
 router.get('/profile', controller.showProfile)
+router.get('/profile_favor', controller.showProfileFavor)
 
 // Like-Unlike
 router.post("/like", controller.likeProp)
 router.post('/unlike', controller.unlikeProp)
+
+// Delete
+router.post('/delete_prop', controller.deleteProp)
+router.get('/profile_prop', controller.showProfileProp)
 
 //Edit Profile
 router.post('/editProfile', controller.changeProfile)
