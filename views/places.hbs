@@ -36,17 +36,19 @@
 
     <div id="search_div">
         <div>
-
             <div class="wrap" id="sort_wrap">
-                <button class="sort_btn" id="sort_btn">Ταξινομηση</button>
-                <div class="drop">
-                    <a href="#">a</a>
-                    <a href="#">b</a>
-                    <a href="#">c</a>
-                    <a href="#">d</a>
-                </div>
+            <button class="sort_btn" id="sort_btn">
+              {{#if currentSortLabel}}{{currentSortLabel}}{{else}}Ταξινόμηση{{/if}}
+            </button>
+            <div class="drop">
+              <a href="?sort=price_asc">Τιμή ↑</a>
+              <a href="?sort=price_desc">Τιμή ↓</a>
+              <a href="?sort=surface_asc">Εμβαδόν ↑</a>
+              <a href="?sort=surface_desc">Εμβαδόν ↓</a>
+              <a href="?sort=constr_year_asc">Έτος ↑</a>
+              <a href="?sort=constr_year_desc">Έτος ↓</a>
             </div>
-
+          </div>
         </div>
         <div class="property-section" id="search_section">
             {{#each properties}}

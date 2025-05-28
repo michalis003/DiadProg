@@ -103,14 +103,82 @@ let getSearchPage = async function(req, res) {
         liked: likedIds.includes(p.prop_id),
       }));
 
-      res.render('places', { properties: spitia, prop: JSON.stringify(spitia), userId: req.session.loggedUserId });
-    } else {
+      // 🔽 STEP 2: Sort if sort parameter exists
+      if (req.query.sort) {
+        const sortKeyMap = {
+          price_asc: ['price', 'asc'],
+          price_desc: ['price', 'desc'],
+          surface_asc: ['surface', 'asc'],
+          surface_desc: ['surface', 'desc'],
+          constr_year_asc: ['constr_year', 'asc'],
+          constr_year_desc: ['constr_year', 'desc']
+        };
+
+        const [key, dir] = sortKeyMap[req.query.sort] || [];
+        if (key && dir) {
+          spitia.sort((a, b) => {
+            if (dir === 'asc') return a[key] - b[key];
+            else return b[key] - a[key];
+          });
+        }
+      }
+      // Helper: Create human-readable sort label for display
+      function getSortLabel(sortValue) {
+        const map = {
+          price_asc: "Τιμή ↑",
+          price_desc: "Τιμή ↓",
+          surface_asc: "Επιφάνεια ↑",
+          surface_desc: "Επιφάνεια ↓",
+          constr_year_asc: "Έτος κατασκευής ↑",
+          constr_year_desc: "Έτος κατασκευής ↓"
+        };
+        return map[sortValue] || null;
+      }
+
+      res.render("places", {
+        properties: spitia,
+        prop: JSON.stringify(spitia),
+        userId: req.session.loggedUserId,
+        currentSortLabel: getSortLabel(req.query.sort)
+      });    
+      } else {
       spitia = spitia.map(p => ({
         ...p,
         liked: false,
       }));
 
-      res.render('places', { properties: spitia, prop: JSON.stringify(spitia), userId: null });
+      // 🔽 STEP 2: Sort if sort parameter exists
+      if (req.query.sort) {
+        const sortKeyMap = {
+          price_asc: ['price', 'asc'],
+          price_desc: ['price', 'desc'],
+          surface_asc: ['surface', 'asc'],
+          surface_desc: ['surface', 'desc'],
+          constr_year_asc: ['constr_year', 'asc'],
+          constr_year_desc: ['constr_year', 'desc']
+        };
+
+        const [key, dir] = sortKeyMap[req.query.sort] || [];
+        if (key && dir) {
+          spitia.sort((a, b) => {
+            if (dir === 'asc') return a[key] - b[key];
+            else return b[key] - a[key];
+          });
+        }
+      }
+      // Helper: Create human-readable sort label for display
+      function getSortLabel(sortValue) {
+        const map = {
+          price_asc: "Τιμή ↑",
+          price_desc: "Τιμή ↓",
+          surface_asc: "Επιφάνεια ↑",
+          surface_desc: "Επιφάνεια ↓",
+          constr_year_asc: "Έτος κατασκευής ↑",
+          constr_year_desc: "Έτος κατασκευής ↓"
+        };
+        return map[sortValue] || null;
+      }
+      res.render('places', { properties: spitia, prop: JSON.stringify(spitia), userId: null, currentSortLabel: getSortLabel(req.query.sort)});
     }
   } catch (err) {
     res.status(500).send(err.message);
