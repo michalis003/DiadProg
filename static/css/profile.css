@@ -42,3 +42,20 @@
 .logout-btn:hover {
     background-color: #b1dd42;
 }
+
+.pagination button{
+    background-color: #1161ee; 
+    color: #b1dd42;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* margin-top: 2px; */
+}
+
+#pageNum-search_section, #pageNum-favorities, #pageNum-my_prop{
+    color: #5cc9c0;
+}
