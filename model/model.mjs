@@ -346,3 +346,9 @@ export let doSubmit_toDB = async function (userID, price, surface, type, address
     const insert = db.prepare(quer);
     const result = insert.run(userId, propId);
  }
+
+export let unlikeProp = async function(userId, propId) {
+    let query = "DELETE FROM ARESEI WHERE buyer_id = ? AND prop_id = ?";
+    const del = db.prepare(query);
+    const result = del.run(userId, propId);
+};
