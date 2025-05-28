@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (data.success) {
           button.dataset.liked = (!liked).toString();
-          button.textContent = liked ? 'Like' : 'Unlike';
+          img = button.querySelector('img');
+          // button.textContent = liked ? 'Like' : 'Unlike';
+          img.src = liked ? '/img/heart_empty.png' : '/img/heart_full.png'
         } else {
           alert('Error: ' + (data.error || 'Unknown error'));
         }
